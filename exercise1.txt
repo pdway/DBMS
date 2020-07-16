@@ -1,0 +1,107 @@
+create database spjdb;
+use spjdb;
+
+
+1. Create the table SEMP with the following structure:-
+create table semp
+( 	empno char(4),
+	empname char(20),
+	basic float(9,2),
+	deptno char(2),
+	depthead char(4)'
+	primary key(empno)	
+);
+=========================================================================
+2. Create the table SDEPT with the following structure:-
+create table Sdept
+( 	deptno char(2),
+	deptname char(15),
+	primary key(deptno)	
+);
+========================================================================
+3. Insert into the SDEPT table the following values:-
+insert into sdept
+values('10','Development'),('20','Training');
+===================================================================
+4. Insert into the SEMP table the following values:-
+insert into semp
+values('0001','SUNIL',6000,'10',null),
+	('0002','HIREN',8000,'20',null),
+	('0003','ALI',4000,'10','0001'),
+	('0004','GEORG',6000,null,'0002');
+
+Create S, P, J, SPJ tables as specified below and insert a few rows in each table:-
+create table S
+( 	sno varchar(10),
+	sname char(15),
+	status int(4),
+	city char(15),
+	primary key(sno)	
+);
+insert into S
+values('s1','ram',20,'london'),
+	('s2','shyam',10,'athens'),
+	('s3','kedar',20,'london'),
+	('s4','virat',30,'athens');
+
+create table P
+( 	pno varchar(10),
+	pname char(15),
+	color char(10),
+	weight float(7,2),
+	city char(15),
+	primary key(pno)	
+);
+insert into P
+values('p1','tube','black',11,'london'),
+	('p2','remote','silver',13,'athens'),
+	('p3','display','white',12,'london'),
+	('p4','shield','black',14,'athens');
+
+create table J
+( 	jno varchar(10),
+	jname char(15),
+	city char(15),
+	primary key(jno)	
+);
+insert into J
+values('j1','assembly','london'),
+	('j2','processing','athens'),
+	('j3','demo','athens'),
+	('j4','modeling','athens');
+
+create table SPJ
+( 	sno varchar(10),
+	pno varchar(10),
+	jno varchar(10),
+	qty char(10),
+	Foreign Key(sno) references s(sno),
+	Foreign Key(pno) references p(pno),
+	Foreign Key(jno) references j(jno)		
+);
+insert into SPJ
+values('s1','p2','j3','good'),
+	('s2','p3','j2','best'),
+	('s4','p4','j4','average'),
+	('s3','p1','j1','good');
+==============================================================================
+5. Display all the data from the S table.
+select * from s;
+=======================================================================
+6. Display only the S# and SNAME fields from the S table.
+select sno,sname from s;
+=====================================================================
+7. Display the PNAME and COLOR from the P table for the CITY=”London”.
+select pname,color from p where city='london';
+===========================================================
+8. Display all the Suppliers from London.
+select * from s where city='london';
+======================================================
+9. Display all the Suppliers from Paris or Athens.
+select * from s where city='paris' or city='athens';
+========================================================================
+10. Display all the Projects in Athens.
+select * from p where city='athens';
+====================================================
+
+
