@@ -103,5 +103,19 @@ select * from s where city='paris' or city='athens';
 10. Display all the Projects in Athens.
 select * from p where city='athens';
 ====================================================
-
+11. Display all the Partnames with the weight between 12 and 14 (inclusive of both).
+select * from p where weight >= 12 and weight <= 14;
+=====================================================================
+12. Display all the Suppliers with a Status greater than or equal to 20.
+select * from s where status >= 20;
+================================================================================
+13. Display all the Suppliers except the Suppliers from London.
+select * from s where city != 'london';
+==========================================================================
+14. Display only the Cities from where the Suppliers come from.
+select city from s ;
+=========================================================================================
+15. Assuming that the Part Weight is in GRAMS, display the same in MILLIGRAMS and KILOGRAMS.
+select weight as "weight in gm.",weight/1000 as "weight in kg.",weight*1000 as "weight in milli." from p;
+=============================================================================================================
 

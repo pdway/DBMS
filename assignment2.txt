@@ -1,0 +1,17 @@
+Assignment-2
+
+1) Which field of the Customers table is the primary key?
+Ans. Cnum field is the primary key in Customers table.
+
+2) What is the 4th column of the Customers table?
+Ans. Customers table has 4th column as Rating which contains integer type data of size 4 Byte.
+
+3) What is another word for row? For column?
+Ans. Another words for row are tuple,entity,opportunity.
+     Another words for column are Attribute,Method.
+
+4) Why isn’t it possible to see the first five rows of a table?
+Ans. a)when we update row , if row length is increasing the entries may be moved to another address.
+     b)Later when we select from the table we will find the at the row at some other position in the output.
+     c)It only in the case of VARCHAR that the length may be increase or decrease.
+     d)Hence it is not possible to see exactly first five rows of a table.
