@@ -1,0 +1,73 @@
+Exercise-2
+
+1. Display the Supplier table in the descending order of CITY.
+	select * from s order by city;
++-----+-------+--------+--------+
+| sno | sname | status | city   |
++-----+-------+--------+--------+
+| s2  | shyam |     10 | athens |
+| s1  | ram   |     20 | london |
+| s3  | kedar |     20 | london |
+| s4  | virat |     30 | paris  |
++-----+-------+--------+--------+
+
+2. Display the Part Table in the ascending order of CITY and within the city in the ascending order of Part names.
+	select * from p order by city,pname;
++-----+---------+--------+--------+--------+
+| pno | pname   | color  | weight | city   |
++-----+---------+--------+--------+--------+
+| p2  | remote  | silver |  13.00 | athens |
+| p4  | shield  | black  |  14.00 | athens |
+| p3  | display | white  |  12.00 | london |
+| p1  | tube    | black  |  11.00 | london |
++-----+---------+--------+--------+--------+
+
+3. Display all the Suppliers with a status between 10 and 20.
+	select * from s where status between 10 and 20;
++-----+-------+--------+--------+
+| sno | sname | status | city   |
++-----+-------+--------+--------+
+| s1  | ram   |     20 | london |
+| s2  | shyam |     10 | athens |
+| s3  | kedar |     20 | london |
++-----+-------+--------+--------+
+
+4. Display all the Parts and their Weight, which are not in the range of 10 and 15.
+	 select * from p;
++-----+---------+--------+--------+--------+
+| pno | pname   | color  | weight | city   |
++-----+---------+--------+--------+--------+
+| p1  | tube    | black  |  11.00 | london |
+| p2  | remote  | silver |  13.00 | athens |
+| p3  | display | white  |  12.00 | london |
+| p4  | shield  | black  |  14.00 | athens |
++-----+---------+--------+--------+--------+
+according to my table,
+select pname,weight from p where weight not between 10 and 15;
+Empty set (0.00 sec)
+
+
+5. Display all the Part names starting with the letter ‘S’.
+	 select pname from p where pname like 'S%';
++--------+
+| pname  |
++--------+
+| shield |
++--------+
+
+6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.
+	select * from s where city like 'L%';
++-----+-------+--------+--------+
+| sno | sname | status | city   |
++-----+-------+--------+--------+
+| s1  | ram   |     20 | london |
+| s3  | kedar |     20 | london |
++-----+-------+--------+--------+
+
+7. Display all the Projects, with the third letter in JNAME as ‘n’.
+	select * from j where jname like '__n%';
++-----+------------+--------+
+| jno | jname      | city   |
++-----+------------+--------+
+| j4  | monitoring | athens |
++-----+------------+--------+
