@@ -1,0 +1,132 @@
+Exercise-3
+
+
+1. Display all the Supplier names with the initial letter capital.
+mysql> Select CONCAT(UPPER(SUBSTRING(sname,1,1)),LOWER(SUBSTRING(sname,2))) as sname from s;
++-------+
+| sname |
++-------+
+| Ram   |
+| Shyam |
+| Kedar |
+| Virat |
++-------+
+4 rows in set (0.06 sec)
+=====================================================================
+2. Display all the Supplier names in upper case.
+mysql> select upper(sname) as sname from s;
++-------+
+| sname |
++-------+
+| RAM   |
+| SHYAM |
+| KEDAR |
+| VIRAT |
++-------+
+4 rows in set (0.00 sec)	
+======================================================
+3. Display all the Supplier names in lower case.
+mysql> select lower(sname) as sname from s;
++-------+
+| sname |
++-------+
+| ram   |
+| shyam |
+| kedar |
+| virat |
++-------+
+4 rows in set (0.00 sec)
+======================================================================================
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+mysql> select lpad (sname,25,' ') as sname from s;
++---------------------------+
+| sname                     |
++---------------------------+
+|                       ram |
+|                     shyam |
+|                     kedar |
+|                     virat |
++---------------------------+
+4 rows in set (0.00 sec)
+===================================================================
+5. Display all the Supplier names (with ‘am’ replaced by ‘pd’).
+	HINT: REPLACE.
+mysql> select replace (sname,'am','pd') as sname from s;
++-------+
+| sname |
++-------+
+| rpd   |
+| shypd |
+| kedar |
+| virat |
++-------+
+4 rows in set (0.03 sec)
+================================================================================================
+6. Implement the above command such that ‘l’ is replaced with ‘a’ and ‘r’ is replaced with ‘o’.
+mysql> SELECT replace(sname,"l","r") as sname, replace(sname,"a","o") as sname FROM s Where sname like '%l%' or sname like '%%';
++-------+-------+
+| sname | sname |
++-------+-------+
+| ram   | rom   |
+| shyam | shyom |
+| kedar | kedor |
+| virat | virot |
++-------+-------+
+4 rows in set (0.00 sec)
+=============================================================
+7. Display the Supplier names and the lengths of the names.
+mysql> select sname,length(sname) as Length from s;
++-------+--------+
+| sname | Length |
++-------+--------+
+| ram   |      3 |
+| shyam |      5 |
+| kedar |      5 |
+| virat |      5 |
++-------+--------+
+4 rows in set (0.00 sec)
+===========================================================================
+8. Use the soundex function to search for a supplier by the name of ‘raam’.
+mysql> select * from s where soundex(sname)=soundex('raam');
++-----+-------+--------+--------+
+| sno | sname | status | city   |
++-----+-------+--------+--------+
+| s1  | ram   |     20 | london |
++-----+-------+--------+--------+
+1 row in set (0.12 sec)
+===========================================================================
+9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).
+
+=============================================
+10. Display the current day (e.g. Thursday).
+mysql> SELECT dayname("2020-07-20");
++-----------------------+
+| dayname("2020-07-20") |
++-----------------------+
+| Monday                |
++-----------------------+
+1 row in set (0.07 sec)
+=================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
