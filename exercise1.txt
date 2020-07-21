@@ -74,16 +74,16 @@ create table SPJ
 ( 	sno varchar(10),
 	pno varchar(10),
 	jno varchar(10),
-	qty char(10),
+	qty int(10),
 	Foreign Key(sno) references s(sno),
 	Foreign Key(pno) references p(pno),
 	Foreign Key(jno) references j(jno)		
 );
 insert into SPJ
-values('s1','p2','j3','good'),
-	('s2','p3','j2','best'),
-	('s4','p4','j4','average'),
-	('s3','p1','j1','good');
+values('s1','p2','j3',2),
+	('s2','p1','j2',4),
+	('s4','p4','j4',1),
+	('s3','p1','j1',5);
 ==============================================================================
 5. Display all the data from the S table.
 select * from s;

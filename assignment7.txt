@@ -1,0 +1,73 @@
+Assignment-7
+
+1) Write a query that counts all orders for October 3.
+mysql> select count(*) as count from orders where odate='1990-10-03';
++-------+
+| count |
++-------+
+|     5 |
++-------+
+1 row in set (0.06 sec)
+
+2) Write a query that counts the number of different non-NULL city values in the Customers table.
+mysql> select count(distinct city) from customers where city is not null;
++----------------------+
+| count(distinct city) |
++----------------------+
+|                    4 |
++----------------------+
+1 row in set (0.09 sec)
+
+3) Write a query that selects each customer’s smallest order.
+mysql> select min(amt) as 'smallest orders' ,cnum from orders group by Cnum;
++-----------------+------+
+| smallest orders | cnum |
++-----------------+------+
+|          767.19 | 2001 |
+|         1713.23 | 2002 |
+|         5160.45 | 2003 |
+|           75.75 | 2004 |
+|         4723.00 | 2006 |
+|         1900.10 | 2007 |
+|           18.69 | 2008 |
++-----------------+------+
+7 rows in set (0.06 sec) 
+
+4) Write a query that selects the first customer, in alphabetical order, whose name begins with G.
+mysql> select min(cname) from customers where cname like "G%" order by cname;
++------------+
+| min(cname) |
++------------+
+| Giovanni   |
++------------+
+1 row in set (0.05 sec)
+
+5) Write a query that selects the highest rating in each city.
+mysql> select max(rating) as 'highest rating',city from customers group by City;
++----------------+----------+
+| highest rating | city     |
++----------------+----------+
+|            300 | Berlin   |
+|            100 | London   |
+|            200 | Rome     |
+|            300 | San Jose |
++----------------+----------+
+4 rows in set (0.06 sec)
+
+6) Write a query that counts the number of salespeople registering orders for each day.
+ (If a salesperson has more than one order on a given day, he or she should be counted only once.).
+mysql> select count(distinct odate,snum) as count from orders ;
++-------+
+| count |
++-------+
+|     9 |
++-------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+

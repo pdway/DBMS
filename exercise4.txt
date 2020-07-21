@@ -1,0 +1,78 @@
+Exercisse-4
+
+1. Display the minimum Status in the Supplier table.
+mysql> select min(status) as status from s;
++--------+
+| status |
++--------+
+|     10 |
++--------+
+1 row in set (0.00 sec)
+
+2. Display the maximum Weight in the Parts table.
+mysql> select max(weight) as 'weight(max.)' from p;
++--------------+
+| weight(max.) |
++--------------+
+|        14.00 |
++--------------+
+1 row in set (0.00 sec)
+
+3. Display the average Weight of the Parts.
+mysql> select avg(weight) as 'weight(avg.)' from p;
++--------------+
+| weight(avg.) |
++--------------+
+|    12.500000 |
++--------------+
+1 row in set (0.04 sec)
+
+4. Display the total Quantity sold for part ‘P1’.
+mysql> select pno,sum(qty) as 'Total Quality' from spj where pno='p1';
++------+---------------+
+| pno  | Total Quality |
++------+---------------+
+| p1   |             9 |
++------+---------------+
+1 row in set (0.00 sec)
+
+
+5. Display the total Quantity sold for each part.
+mysql> select pno,sum(qty) as 'Total Quantity' from spj group by pno;
++------+----------------+
+| pno  | Total Quantity |
++------+----------------+
+| p1   |              9 |
+| p2   |              2 |
+| p4   |              1 |
++------+----------------+
+3 rows in set (0.00 sec)
+
+6. Display the average Quantity sold for each part.
+mysql> select pno,avg(qty) as 'Total Quantity' from spj group by pno;
++------+----------------+
+| pno  | Total Quantity |
++------+----------------+
+| p1   |         4.5000 |
+| p2   |         2.0000 |
+| p4   |         1.0000 |
++------+----------------+
+3 rows in set (0.00 sec)
+
+7. Display the maximum Quantity sold for each part, provided the maximum Quantity is greater than 1.
+
+
+8. Display the Status and the count of Suppliers with that Status.
+
+
+9. Display the count of Projects going on in different cities.
+
+
+10. What is the difference between COUNT(Status) and COUNT(*) ?
+
+
+11. Display the Status and the Count of Suppliers with that Status in the following format as shown below:-
+	Status Count
+	 Ten     1
+	Twenty   2
+	Thirty   3
