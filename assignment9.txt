@@ -1,0 +1,74 @@
+Assignment-9
+
+1) Write a query that lists each order number followed by the name
+ of the customer who made the order.
+mysql> select orders.onum,customers.cname from orders,customers where orders.cnum=customers.cnum order by onum;
++------+----------+
+| onum | cname    |
++------+----------+
+| 3001 | Cisneros |
+| 3002 | Pereira  |
+| 3003 | Hoffman  |
+| 3005 | Liu      |
+| 3006 | Cisneros |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3009 | Giovanni |
+| 3010 | Grass    |
+| 3011 | Clemens  |
++------+----------+
+10 rows in set (0.00 sec)
+
+2) Write a query that gives the names of both the salesperson and 
+the customer for each order along with the order number.
+mysql> select salespeople.sname, customers.cname, orders.onum 
+from orders, salespeople, customers 
+where orders.snum = salespeople.snum and orders.cnum = customers.cnum group by orders.onum;
++---------+----------+------+
+| sname   | cname    | onum |
++---------+----------+------+
+| Rifkin  | Cisneros | 3001 |
+| Motika  | Pereira  | 3002 |
+| Peel    | Hoffman  | 3003 |
+| Serres  | Liu      | 3005 |
+| Rifkin  | Cisneros | 3006 |
+| Serres  | Grass    | 3007 |
+| Peel    | Clemens  | 3008 |
+| Axelrod | Giovanni | 3009 |
+| Serres  | Grass    | 3010 |
+| Peel    | Clemens  | 3011 |
++---------+----------+------+
+10 rows in set (0.00 sec)
+
+3) Write a query that produces all customers serviced by salespeople
+ with a commission above 12%. Output the customer’s name,
+ the salesperson’s name, and the salesperson’s rate of commission.
+mysql> select customers.cname,salespeople.sname,salespeople.comm from salespeople,customers where customers.snum=salespeople.snum having comm > 0.12;
++----------+--------+------+
+| cname    | sname  | comm |
++----------+--------+------+
+| Liu      | Serres | 0.13 |
+| Grass    | Serres | 0.13 |
+| Cisneros | Rifkin | 0.15 |
++----------+--------+------+
+3 rows in set (0.06 sec)
+
+4) Write a query that calculates the amount of the salesperson’s commission 
+on each order by a customer with a rating above 100.
+mysql> select orders.amt*salespeople.comm as "salesperson_comm",orders.onum
+    -> from orders,customers,salespeople
+    -> where salespeople.snum=customers.snum and customers.snum=orders.snum and customers.rating > 100 group by orders.onum;
++------------------+------+
+| salesperson_comm | onum |
++------------------+------+
+|             2.80 | 3001 |
+|           670.86 | 3005 |
+|           164.72 | 3006 |
+|             9.85 | 3007 |
+|           171.32 | 3009 |
+|           170.29 | 3010 |
++------------------+------+
+6 rows in set (0.14 sec)
+
+
+
