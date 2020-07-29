@@ -1,0 +1,108 @@
+Exercise-5
+
+1. Display the Supplier name and the Quantity sold.
+mysql> select s.sname,spj.qty from spj,s where s.sno=spj.sno;
++-------+------+
+| sname | qty  |
++-------+------+
+| ram   |    2 |
+| shyam |    4 |
+| virat |    1 |
+| kedar |    5 |
++-------+------+
+4 rows in set (0.03 sec)
+
+2. Display the Part name and Quantity sold.
+mysql> select p.pname,spj.qty from spj,p where p.pno=spj.pno;
++--------+------+
+| pname  | qty  |
++--------+------+
+| tube   |    4 |
+| tube   |    5 |
+| remote |    2 |
+| shield |    1 |
++--------+------+
+4 rows in set (0.00 sec)
+
+3. Display the Project name and Quantity sold.
+mysql> select j.jname,spj.qty from spj,j where j.jno=spj.jno;
++------------+------+
+| jname      | qty  |
++------------+------+
+| assembly   |    5 |
+| processing |    4 |
+| demo       |    2 |
+| monitoring |    1 |
++------------+------+
+4 rows in set (0.00 sec)
+
+4. Display the Supplier name, Part name, Project name and Quantity sold.
+mysql> select s.sname,p.pname,j.jname,spj.qty from spj,j,p,s where spj.jno= j.jno and spj.pno=p.pno and spj.sno=s.sno;
++-------+--------+------------+------+
+| sname | pname  | jname      | qty  |
++-------+--------+------------+------+
+| ram   | remote | demo       |    2 |
+| shyam | tube   | processing |    4 |
+| virat | shield | monitoring |    1 |
+| kedar | tube   | assembly   |    5 |
++-------+--------+------------+------+
+4 rows in set (0.00 sec) 
+
+5. Display the Supplier name, Supplying Parts to a Project in the same City.
+mysql> select sname,pname,j.city from s,p,j,spj where spj.jno=j.jno and spj.sno=s.sno and spj.pno=p.pno and j.city=p.city and p.city=s.city;
++-------+-------+--------+
+| sname | pname | city   |
++-------+-------+--------+
+| kedar | tube  | london |
++-------+-------+--------+
+1 row in set (0.00 sec)
+
+6. Display the Part name that is ‘Silver’ is color, and the Quantity sold.
+
+mysql> select p.pname,spj.qty from spj,p where spj.pno=p.pno and p.color='silver';
++--------+------+
+| pname  | qty  |
++--------+------+
+| remote |    2 |
++--------+------+
+1 row in set (0.00 sec)
+
+7. Display all the Quantity sold by Suppliers with the Status = 20.
+mysql> select s.sname,spj.qty from spj,s where spj.sno=s.sno and s.status=20;
++-------+------+
+| sname | qty  |
++-------+------+
+| ram   |    2 |
+| kedar |    5 |
++-------+------+
+2 rows in set (0.00 sec)
+
+8. Display all the Parts and Quantity with a Weight > 14.
+mysql> select p.pname,spj.qty from spj,p where spj.pno=p.pno and p.weight>14;
+Empty set (0.00 sec)
+
+9. Display all the Project names and City, which has bought more than 2 Parts.
+mysql> select j.jname,j.city,spj.qty from spj,j where spj.jno=j.jno and spj.qty>2;
++------------+--------+------+
+| jname      | city   | qty  |
++------------+--------+------+
+| processing | athens |    4 |
+| assembly   | london |    5 |
++------------+--------+------+
+2 rows in set (0.00 sec)
+
+10. Display all the Part names and Quantity sold that have a Weight less than 15.
+mysql> select p.pname,spj.qty from spj,p where spj.pno=p.pno and p.weight<15;
++--------+------+
+| pname  | qty  |
++--------+------+
+| remote |    2 |
+| tube   |    4 |
+| shield |    1 |
+| tube   |    5 |
++--------+------+
+4 rows in set (0.03 sec)
+
+11. Display all the Employee names and the name of their Managers.
+
+

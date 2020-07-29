@@ -1,0 +1,77 @@
+Assignment-17
+
+1) Create the Orders table so that all onum values as well as all combinations of cnum and snum 
+are different from one another, and so that NULL values are excluded from the date field.
+mysql> create table orders1
+    -> (
+    -> onum varchar(15),
+    -> odate date not null,
+    -> cnum varchar(15),
+    -> snum varchar(15),
+    -> primary key(onum,cnum,snum)
+    -> );
+Query OK, 0 rows affected (8.10 sec)
+
+mysql> desc orders1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| onum  | varchar(15) | NO   | PRI | NULL    |       |
+| odate | date        | NO   |     | NULL    |       |
+| cnum  | varchar(15) | NO   | PRI | NULL    |       |
+| snum  | varchar(15) | NO   | PRI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.17 sec)
+
+2) Create the Salespeople table so that the default commission is 10% with no NULLS permitted,
+ snum is the primary key, and all names fall alphabetically between A and M, inclusive
+ (assume all names will be uppercase).
+mysql> create table salespeople1
+    -> (
+    -> comm float(3,2) default 0.10 not null,
+    -> snum varchar(15) primary key,
+    -> sname varchar(15) check(substr(upper(sname),1,1) between "A" and "M")
+    -> );
+Query OK, 0 rows affected (0.99 sec)
+
+mysql>
+mysql> desc salespeople1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| comm  | float(3,2)  | NO   |     | 0.10    |       |
+| snum  | varchar(15) | NO   | PRI | NULL    |       |
+| sname | varchar(15) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.15 sec)
+
+3) Create the Orders table, making sure that the onum is greater than the cnum, and the cnum is 
+greater that the snum. Allow no NULLS in any of these three fields.
+ mysql> create table orders2
+    -> (
+    ->     snum int(4) not null,
+    ->     cnum int(4) not null,
+    ->     onum int(4) not null,
+    ->     check(onum > cnum and cnum > snum)
+    -> );
+Query OK, 0 rows affected (1.02 sec)
+
+mysql> desc orders2;
++-------+--------+------+-----+---------+-------+
+| Field | Type   | Null | Key | Default | Extra |
++-------+--------+------+-----+---------+-------+
+| snum  | int(4) | NO   |     | NULL    |       |
+| cnum  | int(4) | NO   |     | NULL    |       |
+| onum  | int(4) | NO   |     | NULL    |       |
++-------+--------+------+-----+---------+-------+
+3 rows in set (0.14 sec)
+
+
+
+
+
+
+
+
+
+
