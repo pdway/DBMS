@@ -18,4 +18,5 @@ mysql> create index i_odate on orders(odate);
 
 4) Let us assume that each salesperson is to have only one customer of a given rating, 
 and that this is currently the case. Enter a command that enforces it.
+mysql> create index i_unique_snum_cnum_rating on customers(cnum,rating,snum);
 

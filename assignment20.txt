@@ -4,22 +4,24 @@ Assignment-20
 #1
 Create View Dailyorders
 as Select Distinct cnum, snum, onum, odate from Orders;
-
+Ans. This view allow to create updatable view.
 #2
 Create View Custotals
 as Select cname, Sum (amt) Sum_Amt from Orders, Customers
 where Orders.cnum=Customers.cnum Group by cname;
-
+Ans. This view not allow to create updatable view.
+     If we use grop by function,aggregate function,join then 
+     then we cannot create updatable view.
 #3
 Create view Thirdorders
 as Select * from Dailyorders where odate=’1990-10-03’;
-
+Ans. This view allow to create updatable view.
 #4
 Create view Nullcities
 as Select snum, sname, city
 from Salespeople where city is NULL
 OR sname BETWEEN ‘A’ and ‘MZ’;
-
+Ans. This view allow to create updatable view.
 
 2) Create a view of the Salespeople table called Commissions. This view will include only the snum and comm fields.
  Through this view, someone could enter or change commissions, but only to values between .10 and .20.
